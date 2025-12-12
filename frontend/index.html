@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>XTTS-v2 Voice Clone (Local)</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>Clonación de voz (Coqui TTS + XTTS-v2)</h1>
+      <p class="muted">1) sube tu audio + warmup, 2) escribe texto y dale a Play.</p>
+    </header>
+
+    <section class="card">
+      <h2>1) Registrar voz (audio + warmup)</h2>
+
+      <div class="grid">
+        <label class="field">
+          <span>Idioma (del texto)</span>
+          <input id="langRegister" type="text" value="es" placeholder="es, en, fr..." />
+        </label>
+
+        <label class="field">
+          <span>Audio de referencia</span>
+          <input id="refAudio" type="file" accept="audio/*" />
+          <small class="muted">Recomendado WAV. Si subes MP3 y tu entorno no tiene decoder, puede fallar.</small>
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Warmup text (se usa para cachear la voz y generar un preview)</span>
+        <textarea id="warmupText" rows="3" placeholder="Ej: Hola, soy Álvaro y esta es una prueba."></textarea>
+      </label>
+
+      <div class="row">
+        <button id="btnRegister">Crear voz</button>
+        <div id="registerStatus" class="status muted">Aún no registrada.</div>
+      </div>
+
+      <div class="row">
+        <audio id="previewAudio" controls></audio>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2) Sintetizar texto con la voz registrada</h2>
+
+      <div class="grid">
+        <label class="field">
+          <span>voice_id</span>
+          <input id="voiceId" type="text" placeholder="(se rellena al registrar)" readonly />
+        </label>
+
+        <label class="field">
+          <span>Idioma (opcional, si quieres forzarlo)</span>
+          <input id="langTTS" type="text" placeholder="vacío = usa el del registro" />
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Texto a decir</span>
+        <textarea id="ttsText" rows="4" placeholder="Escribe lo que quieres que diga..."></textarea>
+      </label>
+
+      <div class="row">
+        <button id="btnSpeak" disabled>Play</button>
+        <div id="ttsStatus" class="status muted">Esperando voz.</div>
+      </div>
+
+      <div class="row">
+        <audio id="outAudio" controls></audio>
+      </div>
+    </section>
+
+    <footer class="footer muted">
+      Backend por defecto: <code>http://localhost:9999</code>
+    </footer>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

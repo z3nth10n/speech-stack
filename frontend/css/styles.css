@@ -1,0 +1,317 @@
+:root {
+  /* Dark Mode (Default) */
+  --bg: #020617;
+  --bg-alt: #0f172a;
+  --card-bg: #020617;
+  --accent: #22c55e;
+  --accent-soft: rgba(34, 197, 94, 0.25);
+  --border: #1f2933;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --error: #fb7185;
+
+  --gradient-1: #1d4ed8;
+  --gradient-2: #22c55e;
+  --app-bg-gradient-start: rgba(15, 23, 42, 0.96);
+  --app-bg-gradient-end: rgba(15, 23, 42, 0.98);
+  --shadow-color: rgba(15, 23, 42, 0.85);
+  --shadow-border: rgba(148, 163, 184, 0.1);
+
+  --surface-highlight: rgba(255, 255, 255, 0.05);
+  --surface-hover: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(255, 255, 255, 0.2);
+
+  --input-bg: #1e293b;
+
+  --panel-bg: rgba(15, 23, 42, 0.9);
+  --panel-bg-gradient: rgba(148, 163, 184, 0.18);
+
+  --waveCanvas-bg-gradient1: rgba(31, 41, 55, 0.8);
+  --waveCanvas-bg-gradient2: rgba(15, 23, 42, 0.98);
+
+  --waveCanvas-border: rgba(15, 23, 42, 0.95);
+
+  --status-chip-bg: rgba(15, 23, 42, 0.7);
+  --status-dot-idle: #4b5563;
+}
+
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --bg-alt: #ffffff;
+  --card-bg: #ffffff;
+  --accent: #16a34a;
+  --accent-soft: rgba(22, 163, 74, 0.15);
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --muted: #64748b;
+  --error: #ef4444;
+
+  --gradient-1: #60a5fa;
+  --gradient-2: #4ade80;
+  --app-bg-gradient-start: rgba(255, 255, 255, 0.9);
+  --app-bg-gradient-end: rgba(255, 255, 255, 0.95);
+  --shadow-color: rgba(148, 163, 184, 0.2);
+  --shadow-border: rgba(148, 163, 184, 0.2);
+
+  --surface-highlight: rgba(0, 0, 0, 0.05);
+  --surface-hover: rgba(0, 0, 0, 0.1);
+  --border-light: rgba(0, 0, 0, 0.1);
+
+  --input-bg: #ffffff;
+
+  --panel-bg: rgba(255, 255, 255, 0.9);
+  --panel-bg-gradient: rgba(100, 116, 139, 0.12);
+
+  --waveCanvas-bg-gradient1: rgba(241, 245, 249, 0.8);
+  --waveCanvas-bg-gradient2: rgba(226, 232, 240, 0.98);
+
+  --waveCanvas-border: rgba(100, 116, 139, 0.45);
+
+  --status-chip-bg: rgba(241, 245, 249, 0.7);
+  --status-dot-idle: #9ca3af;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, var(--gradient-1) 0, transparent 55%),
+    radial-gradient(circle at bottom right, var(--gradient-2) 0, transparent 55%),
+    var(--bg);
+}
+
+/* Layout principal (tu HTML usa .container) */
+.container {
+  width: 100%;
+  max-width: 720px;
+  background: linear-gradient(
+    to bottom right,
+    var(--app-bg-gradient-start),
+    var(--app-bg-gradient-end)
+  );
+  border-radius: 24px;
+  padding: 22px 26px 20px;
+  box-shadow: 0 24px 60px var(--shadow-color),
+    0 0 0 1px var(--shadow-border);
+}
+
+/* Header */
+.header {
+  margin-bottom: 16px;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 22px;
+  letter-spacing: 0.03em;
+}
+
+.subtitle,
+.header p,
+.muted {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Cards (secciones) */
+.card {
+  background: linear-gradient(
+    180deg,
+    var(--panel-bg) 0%,
+    rgba(15, 23, 42, 0.78) 100%
+  );
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+}
+
+.card h2 {
+  margin: 0 0 14px 0;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+}
+
+/* Grids / rows */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Field */
+.field {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.field span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.field small {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Inputs */
+input,
+textarea {
+  width: 100%;
+  background: var(--input-bg);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+textarea {
+  border-radius: 14px;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+/* File input */
+input[type="file"] {
+  padding: 8px 10px;
+}
+
+/* Buttons (tu HTML no añade clase; estilizamos button directamente) */
+button {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(34, 197, 94, 0.1);
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0px);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Status chips */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--status-chip-bg);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  min-height: 28px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.status::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--status-dot-idle);
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.15);
+}
+
+.busy {
+  color: var(--accent) !important;
+}
+
+.busy::before {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+/* Audio */
+audio {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* Footer */
+.footer {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  color: var(--text);
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+    align-items: flex-start;
+  }
+
+  .container {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+}
